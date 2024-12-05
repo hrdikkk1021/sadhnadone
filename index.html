@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wake-Up Time</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1D3557, #457B9D);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: background-fade 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes background-fade {
+            0% { background: linear-gradient(135deg, #1D3557, #457B9D); }
+            100% { background: linear-gradient(135deg, #A8DADC, #F1FAEE); }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            padding: 30px 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: container-pop 1s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes container-pop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #1D3557;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        label {
+            display: block;
+            font-size: 20px;
+            margin: 20px 0 15px;
+            color: #2F4F4F;
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button-group button {
+            width: 120px;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .yes-btn {
+            background: #2a9d8f;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #264653;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 128, 0, 0.5);
+        }
+
+        .no-btn {
+            background: #e63946;
+            color: white;
+        }
+
+        .no-btn:hover {
+            background: #d32f2f;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fade-in 1s forwards;
+        }
+
+        .result span {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: normal;
+            color: #666;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #457B9D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: none; /* Hidden initially */
+        }
+
+        .next-btn:hover {
+            background-color: #1D3557;
+            transform: scale(1.1);
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wake-Up Time (2 Marks)</h1>
+        <label>Did you wake up before 07:30 AM?</label>
+        <div class="button-group">
+            <button class="yes-btn" onclick="setWakeUpTime('before')">Yes</button>
+            <button class="no-btn" onclick="setWakeUpTime('after')">No</button>
+        </div>
+
+        <div class="result" id="result">
+            <!-- Result will appear here -->
+        </div>
+        <button class="next-btn" id="next-btn" onclick="goToNextPage()">Next</button>
+    </div>
+
+    <script>
+        function setWakeUpTime(time) {
+            const resultElement = document.getElementById('result');
+            const nextButton = document.getElementById('next-btn');
+
+            // Reset animation
+            resultElement.style.animation = "none";
+            void resultElement.offsetWidth; // Trigger reflow
+            resultElement.style.animation = "fade-in 1s forwards";
+
+            if (time === 'before') {
+                resultElement.innerHTML = `
+                    <div>Great job! 🎉</div>
+                    <span>You woke up <strong>before 07:30 AM</strong> and earned 2 marks.</span>
+                `;
+                resultElement.style.color = '#2a9d8f';
+            } else if (time === 'after') {
+                resultElement.innerHTML = `
+                    <div>Oops! 🕒</div>
+                    <span>You woke up <strong>after 07:30 AM</strong>. Try waking up earlier next time!</span>
+                `;
+                resultElement.style.color = '#e63946';
+            }
+
+            // Show the Next button
+            nextButton.style.display = 'inline-block';
+        }
+
+        function goToNextPage() {
+            // Redirect to the local file
+            window.location.href = "file:///C:/Users/hardi/Desktop/aaa/sadhana.html";
+        }
+    </script>
+</body>
+</html>
+
+

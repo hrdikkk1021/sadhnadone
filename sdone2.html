@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swami Ji's Messages</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('h.jpg'); /* Replace with your image */
+            background-size: cover; /* Ensure the image covers the viewport */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repetition */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.525); /* Slight transparency */
+            padding: 30px 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: container-pop 1s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes container-pop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #1D3557;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        label {
+            display: block;
+            font-size: 20px;
+            margin: 20px 0 15px;
+            color: #2F4F4F;
+            font-weight: 500;
+        }
+
+        .image-container {
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button-group button {
+            width: 120px;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .yes-btn {
+            background: #2a9d8f;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #264653;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 128, 0, 0.5);
+        }
+
+        .no-btn {
+            background: #e63946;
+            color: white;
+        }
+
+        .no-btn:hover {
+            background: #d32f2f;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fade-in 1s forwards;
+        }
+
+        .result span {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: normal;
+            color: #666;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Read Swami Ji's Messages 
+        </h1>
+        
+        <!-- Image of Swami Ji -->
+        <div class="image-container">
+            <img src="swamiji.jpg" alt="Swami Ji Teaching">
+        </div>
+
+        <label>Do you accept Swami Ji's teachings?</label>
+        <div class="button-group">
+            <button class="yes-btn" onclick="setMarks('yes')">Yes</button>
+            <button class="no-btn" onclick="setMarks('no')">No</button>
+        </div>
+
+        <div class="result" id="result">
+            <!-- Result will appear here -->
+        </div>
+    </div>
+
+    <script>
+        function setMarks(response) {
+            const resultElement = document.getElementById('result');
+
+            resultElement.style.animation = "none"; // Reset animation
+            void resultElement.offsetWidth; // Trigger reflow
+            resultElement.style.animation = "fade-in 1s forwards"; // Reapply animation
+
+            if (response === 'yes') {
+                resultElement.innerHTML = `
+                    <div>Great Choice! 🌟</div>
+                    <span>You have accepted Swami Ji's teachings and earned <strong>2 marks</strong>.</span>
+                `;
+                resultElement.style.color = '#2a9d8f'; // Greenish color for success
+            } else {
+                resultElement.innerHTML = `
+                    <div>Hmm... 🙄</div>
+                    <span>You did not accept Swami Ji's teachings. Try to reflect more.</span>
+                `;
+                resultElement.style.color = '#e63946'; // Red color for failure
+            }
+        }
+    </script>
+</body>
+</html>

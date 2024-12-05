@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadhana - Dhyan Marks</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('dhayan.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            padding: 30px 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1D3557;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2F4F4F;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .button-group button {
+            width: 100px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .yes-btn {
+            background: #2a9d8f;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #264653;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 128, 0, 0.5);
+        }
+
+        .no-btn {
+            background: #e63946;
+            color: white;
+        }
+
+        .no-btn:hover {
+            background: #d32f2f;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+        }
+
+        .result {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #457B9D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .next-btn:hover {
+            background-color: #1D3557;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sadhana - Marks Allocation</h1>
+        
+        <!-- Section 1: Akant Dhyan -->
+        <div class="section">
+            <h2>Akant Dhyan</h2>
+            <div class="button-group">
+                <button class="yes-btn" onclick="setMarks('akant', 'yes')">Yes</button>
+                <button class="no-btn" onclick="setMarks('akant', 'no')">No</button>
+            </div>
+            <div class="result" id="akant-result"></div>
+        </div>
+
+        <!-- Section 2: Samuhik Dhyan -->
+        <div class="section">
+            <h2>Samuhik Dhyan</h2>
+            <div class="button-group">
+                <button class="yes-btn" onclick="setMarks('samuhik', 'yes')">Yes</button>
+                <button class="no-btn" onclick="setMarks('samuhik', 'no')">No</button>
+            </div>
+            <div class="result" id="samuhik-result"></div>
+        </div>
+
+        <!-- Next Button -->
+        <button class="next-btn" onclick="goToNextPage()">Next</button>
+    </div>
+
+    <script>
+        function setMarks(section, response) {
+            const resultElement = document.getElementById(`${section}-result`);
+
+            if (response === 'yes') {
+                resultElement.innerHTML = `
+                    <div>Great Choice! 🌟</div>
+                    <span>You have earned <strong>10 marks</strong> for ${section === 'akant' ? 'Akant Dhyan' : 'Samuhik Dhyan'}.</span>
+                `;
+                resultElement.style.color = '#2a9d8f'; // Green for success
+            } else {
+                resultElement.innerHTML = `
+                    <div>Missed Opportunity! 🙄</div>
+                    <span>You earned <strong>0 marks</strong> for ${section === 'akant' ? 'Akant Dhyan' : 'Samuhik Dhyan'}.</span>
+                `;
+                resultElement.style.color = '#e63946'; // Red for no marks
+            }
+        }
+
+        function goToNextPage() {
+            // Redirect to the local file
+            window.location.href = "file:///C:/Users/hardi/Desktop/aaa/sdone2.html";
+        }
+    </script>
+</body>
+</html>
